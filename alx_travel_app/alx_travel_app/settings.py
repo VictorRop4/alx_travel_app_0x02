@@ -51,6 +51,24 @@ INSTALLED_APPS = [
     
 ]
 
+CHAPA_SECRET_KEY = env('CHAPA_SECRET_KEY')
+CHAPA_BASE_URL = env('CHAPA_BASE_URL', default="https://api.chapa.co/v1")
+CHAPA_CALLBACK_URL = env('CHAPA_CALLBACK_URL')
+CHAPA_RETURN_URL = env('CHAPA_RETURN_URL')
+
+
+CELERY_BROKER_URL = env('CELERY_BROKER_URL', default='redis://localhost:6379/0')
+CELERY_RESULT_BACKEND = env('CELERY_RESULT_BACKEND', default='redis://localhost:6379/0')
+
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default='no-reply@your-domain.com')
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = env('EMAIL_HOST', default='smtp.example.com')
+EMAIL_PORT = env('EMAIL_PORT', default=587)
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = env('EMAIL_HOST_USER', default='')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD', default='')
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

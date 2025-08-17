@@ -58,3 +58,16 @@ class Command(BaseCommand):
                 )
 
         self.stdout.write(self.style.SUCCESS('Database seeded successfully.'))
+
+from rest_framework import serializers
+from .models import Payment
+
+class PaymentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Payment
+        fields = [
+            "id", "booking_reference", "user", "amount", "currency",
+            "chapa_tx_ref", "chapa_transaction_id", "status", "metadata",
+            "created_at", "updated_at",
+        ]
+        read_only_fields = ["id", "user", "status", "chapa_transaction_id", "metadata", "created_at", "updated_at"]
